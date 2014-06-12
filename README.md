@@ -23,7 +23,7 @@ var logger = require('divshot-logger')('App Name', {
 
 ### Options
 
-* `console` - write the current environment's stdout (i.e. console.log)
+* `console` - write to the current environment's stdout (i.e. console.log). Good for local dev.
 * `remote` - write the the configured remote logging platform. Requires `host` and `port` options to be configured in setup or PAPERTRAIL_HOST and PAPERTRAIL_PORT to be configured in the environment.
 * `host` - host of the remote Papertrail account
 * `port` - port of the remote Papertrail account
