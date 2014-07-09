@@ -14,9 +14,15 @@ module.exports = function (prefix, options) {
   }
   
   function papertrailTransport () {
+    var host = process.env.PAPERTRAIL_HOST || options.host;
+    var port = process.env.PAPERTRAIL_PORT || options.port;
+    
+    if (!host) throw new Error('Must provide the HOST for a hosted logger');
+    if (!port) throw new Error('Must provide the PORT for a hosted logger');
+    
     return new winston.transports.Papertrail({
-      host: process.env.PAPERTRAIL_HOST || options.host || 'logs.papertrailapp.com',
-      port: process.env.PAPERTRAIL_PORT || options.port ||  77777,
+      host: host,
+      port: port,
       logFormat: function(level, message) {
         return prefix + ': [' + level + '] ' + message;
       },
