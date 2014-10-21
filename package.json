@@ -1,6 +1,6 @@
 {
   "name": "divshot-logger",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Logging for all things Divshot",
   "main": "index.js",
   "scripts": {

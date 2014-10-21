@@ -29,15 +29,6 @@ module.exports = function (prefix, options) {
       colorize: options.colorize
     });
     
-    socket.on('connection', function () {
-      console.log('SOCKET CONNECTED');
-    });
-    
-    socket.on('error', function (err) {
-      console.log('SOCKET ERROR:', err.message);
-      console.log(err.stack);
-    });
-    
     return socket;
   }
 };
