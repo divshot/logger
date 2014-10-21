@@ -20,13 +20,24 @@ module.exports = function (prefix, options) {
     if (!host) throw new Error('Must provide the HOST for a hosted logger');
     if (!port) throw new Error('Must provide the PORT for a hosted logger');
     
-    return new winston.transports.Papertrail({
+    var socket =  new winston.transports.Papertrail({
       host: host,
       port: port,
       logFormat: function(level, message) {
         return prefix + ': [' + level + '] ' + message;
       },
       colorize: options.colorize
-    })
+    });
+    
+    socket.on('connection', function () {
+      console.log('SOCKET CONNECTED');
+    });
+    
+    socket.on('error', function (err) {
+      console.log('SOCKET ERROR:', err.message);
+      console.log(err.stack);
+    });
+    
+    return socket;
   }
 };
