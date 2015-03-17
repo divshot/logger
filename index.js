@@ -26,7 +26,8 @@ module.exports = function (prefix, options) {
       logFormat: function(level, message) {
         return prefix + ': [' + level + '] ' + message;
       },
-      colorize: options.colorize
+      colorize: options.colorize,
+      handleExceptions: true
     });
   }
 };
